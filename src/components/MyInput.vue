@@ -1,6 +1,7 @@
 <template>
   <div>
-    <input type="text" v-model="footer_location" placeholder="footer text displayed">
+    <span>{{msg}}</span>
+    <textarea v-model="footer_location" placeholder="footer text displayed"></textarea>
     <button @click="change">Change</button>
   </div>
 </template>
@@ -10,6 +11,9 @@ import { secondaryDatabase } from '../config';
 
 export default {
   name: 'MyInput',
+  props: {
+    msg: String
+  },
   data() {
     return {
       footer_location: '',
@@ -27,5 +31,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  span{
+    margin-bottom: 20px;
+  }
+  textarea{
+    width: 500px;
+    height: 200px;
+    margin-bottom: 20px;
+    resize: none;
+  }
 
 </style>
