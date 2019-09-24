@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <MyInput class="my-input" msg="Footer location in alvarokoke's site"/>
+    <MyInput class="my-input" msg="ALVAROKOKE"/>
     <button class="logout-but" @click="logout">Logout</button>
   </div>
 </template>
