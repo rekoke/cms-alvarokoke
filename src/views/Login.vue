@@ -8,7 +8,7 @@
     </div>
 </template>
 <script>
-    import { login } from '../config';
+    import login from '../authConfig';
     export default {
         name: 'login',
         data(){

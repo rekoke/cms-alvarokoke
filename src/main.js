@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-import { login } from './config';
+import login from './authConfig';
 
 Vue.config.productionTip = false;
 let app = '';

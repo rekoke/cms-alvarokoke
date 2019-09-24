@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { login } from '../config';
+import login from '../authConfig';
 
 // @ is an alias to /src
 import MyInput from '@/components/MyInput.vue';

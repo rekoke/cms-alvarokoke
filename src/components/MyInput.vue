@@ -2,17 +2,17 @@
   <div>
     <span>{{msg}}</span>
     <textarea v-model="footer_location" placeholder="footer text displayed"></textarea>
-    <button @click="change">Change</button>
+    <button @click="submit">submit</button>
   </div>
 </template>
 
 <script>
-import { secondaryDatabase } from '../config';
+import alvarokokeDB from '../dbConfig';
 
 export default {
   name: 'MyInput',
   props: {
-    msg: String
+    msg: String,
   },
   data() {
     return {
@@ -20,10 +20,20 @@ export default {
     };
   },
   methods: {
-    change() {
-      const updates = {};
-      updates.footer_location = this.footer_location;
-      secondaryDatabase.ref().update(updates);
+    submit() {
+      const updates = {
+        footer: this.footer_location
+      };
+      console.log(updates);
+      alvarokokeDB.collection("home")
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                console.log(doc.id, " => ", doc.data());
+                // Build doc ref from doc.id
+                alvarokokeDB.collection("home").doc(doc.id).update(updates);
+            });
+      })
     },
   },
 };
