@@ -1,0 +1,20 @@
+/* Color Theme Swatches in Hex */
+.Cyan-Shades-1-hex { color: #9AD7F5; }
+.Cyan-Shades-2-hex { color: #4EB8ED; }
+.Cyan-Shades-3-hex { color: #029AE5; }
+.Cyan-Shades-4-hex { color: #016CA0; }
+.Cyan-Shades-5-hex { color: #013E5C; }
+
+/* Color Theme Swatches in RGBA */
+.Cyan-Shades-1-rgba { color: rgba(154, 215, 245, 1); }
+.Cyan-Shades-2-rgba { color: rgba(78, 184, 237, 1); }
+.Cyan-Shades-3-rgba { color: rgba(2, 154, 229, 1); }
+.Cyan-Shades-4-rgba { color: rgba(1, 108, 160, 1); }
+.Cyan-Shades-5-rgba { color: rgba(1, 62, 92, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Cyan-Shades-1-hsla { color: hsla(199, 81, 78, 1); }
+.Cyan-Shades-2-hsla { color: hsla(200, 81, 61, 1); }
+.Cyan-Shades-3-hsla { color: hsla(199, 98, 45, 1); }
+.Cyan-Shades-4-hsla { color: hsla(199, 98, 31, 1); }
+.Cyan-Shades-5-hsla { color: hsla(199, 97, 18, 1); }
