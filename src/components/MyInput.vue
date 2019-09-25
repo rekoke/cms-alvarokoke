@@ -54,7 +54,6 @@ export default {
             querySnapshot.forEach(function(doc) {
                 // Build doc ref from doc.id
                 alvarokokeDB.collection("home").doc(doc.id).update(updates).then(() => {
-                  console.log('this in then', vm);
                   vm.loading = false;
                 });
             });

@@ -1,10 +1,28 @@
 <template>
     <div class="login">
         <h1>alvarokoke CMS</h1>
-        <h3>Sign in</h3>
-        <input type="text" v-model="email" placeholder="Email">
-        <input type="password" v-model="password" placeholder="Password"/>
-        <button @click="login">GO!</button>
+        <form>
+            <v-text-field
+                v-model="email"
+                label="E-mail"
+                required
+                :rules="emailRules"
+                @click="removeError"
+            ></v-text-field>
+            <v-text-field
+                :type="'password'"
+                v-model="password"
+                label="password"
+                required
+                @click="removeError"
+            ></v-text-field>
+            <v-btn 
+                style="backgroundColor: #013E5C; color: white; width: 100%; font-weight: bold" 
+                v-bind:class="{ errorButton: iserrorButton }" 
+                @click="login">
+                    {{ buttonText }}
+                </v-btn>
+        </form>
     </div>
 </template>
 <script>
@@ -13,18 +31,31 @@
         name: 'login',
         data(){
             return {
-                email: '',
-                password: ''
+                iserrorButton: false,
+                valid: false,
+                email: null,
+                password: null,
+                buttonText: "GO!",
+                emailRules: [
+                    v => !!v || 'E-mail is required',
+                    v => /.+@.+/.test(v) || 'E-mail must be valid',
+                ],
             };
         },
         methods: {
+            removeError: function(){
+                this.iserrorButton= false;
+                this.buttonText = "GO!"
+            },
             login: function(){
                 login.auth().signInWithEmailAndPassword(this.email, this.password).then(
                     (user) => {
                         this.$router.replace('home');
                     },
                     (err) => {
-                        alert('Ooops....' + err.message)
+                        this.password = '';
+                        this.iserrorButton = true;
+                        this.buttonText = "SOMETHING WENT WRONG"
                     }
                 )
             }
@@ -32,8 +63,17 @@
     }
 </script>
 <style scooped>
+    h1{
+        color: #013E5C;
+        margin-bottom: 50px;
+    }
     body{
         margin: 0;
+    }
+    form{
+        width: 30vw;
+        border-radius: 3px;
+        padding: 40px;
     }
     .login{
         height: 100vh;
@@ -43,25 +83,12 @@
         align-items: center;
         justify-content: center;
     }
-    h1{
-        margin: 0;
-        text-transform: uppercase;
-        color: #233d4d;
+    .v-input{
+        margin-bottom: 30px;
     }
-    input{
-        width: 20vw;
-        height: 20px;
-        font-size: 15px;
-        margin-bottom: 20px;
-    }
-    button{
-        width: 20vw;
-        line-height: 20px;
-        background-color: #233D4D;
-        font-size: 15px;
-        padding: 10px;
-        border-radius: 3px;
-        color: white;
-        cursor: pointer;
+    .errorButton{
+        transition: all .3s;
+        background-color: red !important;
+
     }
 </style>
