@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import alvarokokeDB from '../dbConfig';
+import {alvarokokeDB} from '../dbConfig';
 
 export default {
   name: 'MyInput',
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     submit() {
-      var vm = this
+      var vm = this;
       this.loading=true;
       const updates = {
         footer: this.footer_location
